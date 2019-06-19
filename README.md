@@ -1,4 +1,4 @@
-# personal-website-frontend
+# Personal Website - thimal.me
 
 ## Project setup
 ```
