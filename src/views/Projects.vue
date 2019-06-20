@@ -4,6 +4,7 @@
         <h1>Projects</h1>
         <p>Details of various projects completed and being worked on by me.</p>
         <hr>
+        <div class="testclass"></div>
       </div>
   </div>
 </template>
@@ -18,3 +19,10 @@ export default {
   }
 }
 </script>
+
+<style lang="css">
+.testclass {
+  background-color: #eee;
+  height: 1000px;
+}
+</style>

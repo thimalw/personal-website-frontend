@@ -21,8 +21,13 @@ export default {
 
 <style lang="css">
 /* Animations */
-.view-fade-enter-active, .view-fade-leave-active {
-  transition: opacity .3s ease;
+.view-fade-enter-active {
+  transition: opacity 300ms ease;
+  transition-delay: 200ms;
+}
+.view-fade-leave-active {
+  transition: opacity 0ms ease;
+  transition-delay: 0;
 }
 .view-fade-enter, .view-fade-leave-to {
   opacity: 0;
@@ -38,6 +43,7 @@ body {
   background-color: #fff;
   color: #000;
   font-size: 16px;
+  line-height: 1.5;
 }
 #app {
   font-family: 'Lato', sans-serif;
@@ -63,8 +69,5 @@ h1,h2,h3,h4,h5,h6 {
   /* font-weight: lighter; */
   font-weight: normal;
   margin-top: 20px;
-}
-p {
-  /* font-weight: lighter; */
 }
 </style>

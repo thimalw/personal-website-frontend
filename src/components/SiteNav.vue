@@ -1,15 +1,17 @@
 <template>
 <div id="nav" v-bind:class="{ active: navActive }">
-  <div class="site-branding">
-    <router-link class="nav-item" to="/">
-      <img src="../assets/img/logo_white.svg" alt="">
-    </router-link>
-  </div>
-  <div class="site-nav">
-    <NavItems/>
-  </div>
-  <div class="site-social-icons">
-    <SocialIcons/>
+  <div id="nav-bar" class="nav-bar" v-bind:class="{ homeMode: homeMode }">
+    <div class="site-branding">
+      <router-link class="nav-item" to="/">
+        <img src="../assets/img/logo_white.svg" alt="Thimal Wickremage">
+      </router-link>
+    </div>
+    <div class="site-nav">
+      <NavItems/>
+    </div>
+    <div class="site-social-icons">
+      <SocialIcons/>
+    </div>
   </div>
 </div>
 </template>
@@ -18,13 +20,12 @@
 import NavItems from '@/components/NavItems.vue';
 import SocialIcons from '@/components/SocialIcons.vue';
 
-var navActive = true;
-
 export default {
   name: 'SiteNav',
   data: function() {
     return {
-      navActive: false
+      navActive: true,
+      homeMode: false
     }
   },
   components: {
@@ -37,7 +38,21 @@ export default {
     },
     disableNav: function() {
       this.navActive = false;
+    },
+    enableHomeMode: function() {
+      this.homeMode = true;
+    },
+    disableHomeMode: function() {
+      this.homeMode = false;
     }
+  },
+  mounted() {
+    this.$root.$on('SiteNavHomeMode', () => {
+      this.enableHomeMode();
+    });
+    this.$root.$on('SiteNavDefaultMode', () => {
+      this.disableHomeMode();
+    });
   }
 }
 
@@ -46,13 +61,19 @@ export default {
 
 <style lang="css">
 #nav {
+  border-top: 15px solid #fff;
   position: fixed;
+  display: block;
+  width: 100%;
   top: 0;
   left: 0;
+  z-index: 400;
+}
+.nav-bar {
   background-color: #111;
   width: calc(100% - 30px);
   height: 80px;
-  margin: 15px;
+  margin: 0 15px 15px 15px;
   color: #fff;
   display: flex;
   flex-direction: row;
@@ -61,9 +82,8 @@ export default {
   border-radius: 6px;
   transition: all 250ms ease;
   overflow: hidden;
-  z-index: 400;
 }
-#nav .site-branding {
+.nav-bar .site-branding {
   position: relative;
   opacity: 1;
   margin-top: 0;
@@ -71,17 +91,17 @@ export default {
   transition: all 250ms ease;
   transition-delay: 50ms;
 }
-#nav .site-branding img {
+.nav-bar .site-branding img {
   height: 60px;
   display: block;
 }
-#nav .site-nav {
+.nav-bar .site-nav {
   opacity: 1;
   margin-top: 0;
   transition: all 250ms ease;
   transition-delay: 50ms;
 }
-#nav .nav-links {
+.nav-bar .nav-links {
   display: flex;
   align-items: center;
   position: relative;
@@ -94,7 +114,7 @@ export default {
   margin-top: 0;
   transition: all 250ms ease;
 }
-#nav .site-social-icons {
+.nav-bar .site-social-icons {
   margin-left: auto;
   margin-right: 20px;
   line-height: 1 !important;
@@ -105,12 +125,12 @@ export default {
 }
 
 /* Nav Home Mode */
-#nav.home-mode {
+.nav-bar.homeMode {
   height: calc(100vh - 30px);
 }
-#nav.home-mode .site-branding,
-#nav.home-mode .site-nav,
-#nav.home-mode .site-social-icons {
+.nav-bar.homeMode .site-branding,
+.nav-bar.homeMode .site-nav,
+.nav-bar.homeMode .site-social-icons {
   opacity: 0;
   margin-top: -60%;
   transition-delay: 0ms;
