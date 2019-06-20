@@ -1,6 +1,10 @@
 <template>
   <div class="projects">
-      <h1>Projects</h1>
+      <div class="container">
+        <h1>Projects</h1>
+        <p>Details of various projects completed and being worked on by me.</p>
+        <hr>
+      </div>
   </div>
 </template>
 

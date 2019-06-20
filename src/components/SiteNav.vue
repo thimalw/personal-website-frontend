@@ -5,10 +5,10 @@
       <img src="../assets/img/logo_white.svg" alt="">
     </router-link>
   </div>
-  <div class="nav-links">
+  <div class="site-nav">
     <NavItems/>
   </div>
-  <div class="social-icons">
+  <div class="site-social-icons">
     <SocialIcons/>
   </div>
 </div>
@@ -61,6 +61,7 @@ export default {
   border-radius: 6px;
   transition: all 250ms ease;
   overflow: hidden;
+  z-index: 400;
 }
 #nav .site-branding {
   position: relative;
@@ -68,10 +69,17 @@ export default {
   margin-top: 0;
   margin-left: 20px;
   transition: all 250ms ease;
+  transition-delay: 50ms;
 }
 #nav .site-branding img {
   height: 60px;
   display: block;
+}
+#nav .site-nav {
+  opacity: 1;
+  margin-top: 0;
+  transition: all 250ms ease;
+  transition-delay: 50ms;
 }
 #nav .nav-links {
   display: flex;
@@ -86,54 +94,14 @@ export default {
   margin-top: 0;
   transition: all 250ms ease;
 }
-#nav .nav-links a,
-#nav .nav-links a:visited,
-#nav .nav-links a:focus {
-  display: inline-block;
-  color: #fff;
-  text-decoration: none !important;
-  line-height: 1;
-  text-transform: uppercase;
-  font-size: 14px;
-  margin: 0 5px;
-  padding: 15px 5px;
-}
-#nav .nav-links a:hover,
-#nav .nav-links a:active {
-  color: rgba(255,255,255,0.6);
-}
-#nav .social-icons {
+#nav .site-social-icons {
   margin-left: auto;
   margin-right: 20px;
   line-height: 1 !important;
   opacity: 1;
   margin-top: 0;
-  transition: all 250ms ease;
-}
-#nav .social-icons a,
-#nav .social-icons a:visited,
-#nav .social-icons a:focus {
-  display: inline-block;
-  line-height: 1;
-  color: #fff;
-  text-decoration: none !important;
-  margin: 0 5px;
-  padding: 15px 5px;
-  text-transform: uppercase;
-  font-size: 16px;
-}
-#nav .social-icons a + a:before {
-  content: "/";
-  display: inline-block;
-  color: rgba(255,255,255,0.2) !important;
-  margin-right: 0;
-  padding-right: 10px;
-  margin-left: -10px;
-  pointer-events: none;
-}
-#nav .social-icons a:hover,
-#nav .social-icons a:active {
-  color: rgba(255,255,255,0.6);
+  transition: all 300ms ease;
+  transition-delay: 50ms;
 }
 
 /* Nav Home Mode */
@@ -141,9 +109,10 @@ export default {
   height: calc(100vh - 30px);
 }
 #nav.home-mode .site-branding,
-#nav.home-mode .nav-links,
-#nav.home-mode .social-icons {
+#nav.home-mode .site-nav,
+#nav.home-mode .site-social-icons {
   opacity: 0;
   margin-top: -60%;
+  transition-delay: 0ms;
 }
 </style>
