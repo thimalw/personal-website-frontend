@@ -25,7 +25,7 @@ export default {
   name: 'SiteNav',
   data: function() {
     return {
-      navActive: true,
+      navActive: false,
       homeMode: false
     }
   },
