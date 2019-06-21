@@ -2,27 +2,48 @@
   <div class="projects">
       <div class="container">
         <h1>Projects</h1>
-        <p>Details of various projects completed and being worked on by me.</p>
-        <hr>
-        <div class="testclass"></div>
+        <!-- <hr> -->
+        <Loading v-if="!dataLoaded"/>
+        <Project
+          v-for="project in projects"
+          v-bind:key="project.id"
+          v-bind:project="project"
+        />
       </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import axios from 'axios';
+import Project from '@/components/Project.vue';
+import Loading from '@/components/Loading.vue';
 
 export default {
   name: 'projects',
+  data() {
+    return {
+      projects: [],
+      dataLoaded: false
+    }
+  },
   components: {
-    
+    Project,
+    Loading
+  },
+  mounted() {
+    this.dataLoaded = false;
+    axios
+      .get('https://api.github.com/users/thimalw/repos?type=owner&sort=updated')
+      .then(response => {
+        this.projects = response.data.filter(data => {
+          return !data.fork;
+        });
+        this.dataLoaded = true;
+      });
   }
 }
 </script>
 
 <style lang="css">
-.testclass {
-  background-color: #eee;
-  height: 1000px;
-}
 </style>
