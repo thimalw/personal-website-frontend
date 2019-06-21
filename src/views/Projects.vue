@@ -1,15 +1,16 @@
 <template>
   <div class="projects">
-      <div class="container">
-        <h1>Projects</h1>
-        <!-- <hr> -->
-        <Loading v-if="!dataLoaded"/>
-        <Project
-          v-for="project in projects"
-          v-bind:key="project.id"
-          v-bind:project="project"
-        />
-      </div>
+    <div class="container">
+      <h1>Projects</h1>
+      <!-- <hr> -->
+      <Loading v-if="!dataLoaded"/>
+      <Project
+        v-for="project in projects"
+        v-bind:key="project.id"
+        v-bind:project="project"
+      />
+    </div>
+    <Footer/>
   </div>
 </template>
 
@@ -18,6 +19,7 @@
 import axios from 'axios';
 import Project from '@/components/Project.vue';
 import Loading from '@/components/Loading.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'projects',
@@ -29,7 +31,8 @@ export default {
   },
   components: {
     Project,
-    Loading
+    Loading,
+    Footer
   },
   mounted() {
     this.dataLoaded = false;

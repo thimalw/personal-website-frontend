@@ -10,11 +10,12 @@
 </template>
 
 <script>
-import SiteNav from './components/SiteNav.vue';
+import SiteNav from '@/components/SiteNav.vue';
+
 
 export default {
   components: {
-    SiteNav
+    SiteNav,
   }
 }
 </script>
@@ -52,6 +53,11 @@ body {
 }
 #content {
   margin-top: 110px;
+}
+@media(max-width: 768px) {
+  #content {
+    margin-top: 80px;
+  }
 }
 .container {
   width: 100%;
