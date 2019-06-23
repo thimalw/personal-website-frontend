@@ -92,8 +92,14 @@ export default {
   opacity: 1;
   margin-top: 0;
   margin-left: 20px;
+  padding-right: 20px;
   transition: all 250ms ease;
   transition-delay: 50ms;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .nav-bar .site-branding img {
   height: 60px;
@@ -110,10 +116,10 @@ export default {
   align-items: center;
   position: relative;
   height: 80px;
-  left: 20px;
+  /* left: 20px; */
   padding: 15px 10px;
   line-height: 1;
-  border-left: 1px solid rgba(255,255,255,0.1);
+  /* border-left: 1px solid rgba(255,255,255,0.1); */
   opacity: 1;
   margin-top: 0;
   transition: all 250ms ease;
