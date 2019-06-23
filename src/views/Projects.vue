@@ -37,7 +37,7 @@ export default {
   mounted() {
     this.dataLoaded = false;
     axios
-      .get('https://api.github.com/users/thimalw/repos?type=owner&sort=updated')
+      .get('https://api.github.com/users/thimalw/repos?type=owner&sort=created')
       .then(response => {
         this.projects = response.data.filter(data => {
           return !data.fork;
