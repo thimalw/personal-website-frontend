@@ -2,7 +2,7 @@
 <div class="project-block">
   <div class="project-details">
     <span class="project-details-label">Name</span>
-    <h2 class="project-name">{{ project.name }}</h2>
+    <p class="project-name">{{ project.name }}</p>
 
     <span class="project-details-label">Description</span>
     <p v-if="project.description != null" class="project-description">{{ project.description }}</p>
@@ -52,6 +52,8 @@ export default {
   display: flex;
   flex-direction: column;
   background-color: #f5f5f5;
+  background-color: #fff;
+  border: 1px solid #eee;
   color: #333;
   margin: 30px 0;
   border-radius: 6px;
@@ -86,7 +88,7 @@ export default {
 }
 .project-block .project-details p {
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
 }
 .project-block .project-details p a,
 .project-block .project-details p a:visited,
@@ -111,7 +113,7 @@ export default {
   margin-left: 20px;
 }
 .project-block .project-meta {
-  background-color: #eee;
+  background-color: #f5f5f5;
   /* border-top: 1px solid #eee; */
   display: flex;
   flex-direction: row;
@@ -135,7 +137,7 @@ export default {
   border-left: 1px solid #f5f5f5;
 }
 .project-block .project-meta .meta-item:hover {
-  background-color: #e5e5e5;
+  background-color: #eee;
   color: #000;
 }
 .project-block .project-meta .meta-item i {
@@ -147,22 +149,25 @@ export default {
     flex-direction: row;
     box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
     transform: scale(1);
+    opacity: 0.8;
     transition: all 250ms ease;
   }
   .project-block:hover {
     box-shadow: 0 28px 38px -28px rgba(0,0,0,0.2);
     transform: scale(1.01);
+    opacity: 1;
   }
   .project-block .project-meta {
     flex-direction: column;
     border-top: 0;
+    border-left: 1px solid #eee;
     width: 100px;
     flex-grow: 0;
     flex-shrink: 0;
   }
   .project-block .project-meta .meta-item + .meta-item {
     border-left: 0;
-    border-top: 1px solid #f5f5f5;
+    border-top: 1px solid #eee;
   }
 }
 </style>
