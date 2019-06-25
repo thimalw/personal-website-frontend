@@ -51,17 +51,15 @@ export default {
 .project-block {
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
-  background-color: #fff;
-  border: 1px solid #eee;
   color: #333;
   margin: 30px 0;
-  border-radius: 6px;
-  overflow: hidden;
   position: relative;
 }
 .project-block .project-details {
   padding: 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
 }
 .project-block .project-details {
   flex-grow: 1;
@@ -113,12 +111,10 @@ export default {
   margin-left: 20px;
 }
 .project-block .project-meta {
-  background-color: #f5f5f5;
-  /* border-top: 1px solid #eee; */
   display: flex;
   flex-direction: row;
-  align-items: stretch;
-  justify-content: stretch;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 .project-block .project-meta .meta-item {
   display: flex;
@@ -133,11 +129,7 @@ export default {
   cursor: default;
   transition: all 200ms ease;
 }
-.project-block .project-meta .meta-item + .meta-item {
-  border-left: 1px solid #f5f5f5;
-}
 .project-block .project-meta .meta-item:hover {
-  background-color: #eee;
   color: #000;
 }
 .project-block .project-meta .meta-item i {
@@ -147,12 +139,18 @@ export default {
 @media(min-width: 768px) {
   .project-block {
     flex-direction: row;
-    box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
-    transform: scale(1);
-    opacity: 0.8;
+    opacity: 0.75;
     transition: all 250ms ease;
   }
   .project-block:hover {
+    opacity: 1;
+  }
+  .project-block .project-details {
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
+    transform: scale(1);
+    transition: all 250ms ease;
+  }
+  .project-block:hover .project-details {
     box-shadow: 0 28px 38px -28px rgba(0,0,0,0.2);
     transform: scale(1.01);
     opacity: 1;
@@ -160,14 +158,12 @@ export default {
   .project-block .project-meta {
     flex-direction: column;
     border-top: 0;
-    border-left: 1px solid #eee;
     width: 100px;
     flex-grow: 0;
     flex-shrink: 0;
   }
   .project-block .project-meta .meta-item + .meta-item {
     border-left: 0;
-    border-top: 1px solid #eee;
   }
 }
 </style>
