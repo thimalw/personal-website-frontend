@@ -1,6 +1,6 @@
 <template>
 <div id="nav">
-  <div id="nav-bar" class="nav-bar" v-bind:class="{ homeMode: homeMode, active: navActive }">
+  <div id="nav-bar" class="nav-bar" v-bind:class="{ homeMode: homeMode, active: navActive, scrolled: pageScrolled }">
     <div class="site-branding">
       <router-link class="nav-item" to="/">
         <img src="../assets/img/logo_white.svg" alt="Thimal Wickremage">
@@ -26,7 +26,8 @@ export default {
   data: function() {
     return {
       navActive: false,
-      homeMode: false
+      homeMode: false,
+      pageScrolled : false
     }
   },
   components: {
@@ -34,6 +35,9 @@ export default {
     SocialIcons
   },
   methods: {
+    updateScroll: function() {
+      this.pageScrolled = window.scrollY > 10 ? true : false;
+    },
     toggleNav: function() {
       this.navActive = !this.navActive;
     },
@@ -48,6 +52,8 @@ export default {
     }
   },
   mounted() {
+    window.addEventListener('scroll', this.updateScroll);
+
     this.$root.$on('SiteNavHomeMode', () => {
       this.enableHomeMode();
     });
@@ -74,7 +80,8 @@ export default {
   z-index: 400;
 }
 .nav-bar {
-  background-color: #111;
+  /* background: rgba(21, 100, 219, 1); */
+  background: linear-gradient(45deg, rgba(21, 100, 219, 1) 0%, rgba(21, 100, 219, 1) 50%, rgba(21, 100, 219, 1) 100%);
   width: calc(100% - 30px);
   height: 80px;
   margin: 0 15px 15px 15px;
@@ -86,6 +93,10 @@ export default {
   border-radius: 6px;
   transition: all 250ms ease;
   overflow: hidden;
+  box-shadow: 0 0 30px 0 rgba(0,0,0,0);
+}
+.nav-bar.scrolled {
+  box-shadow: 0 24px 30px -30px rgba(0,0,0,0.88);
 }
 .nav-bar .site-branding {
   position: relative;
@@ -197,6 +208,8 @@ export default {
 /* Nav Home Mode */
 .nav-bar.homeMode {
   height: calc(100vh - 30px) !important;
+  /* background: linear-gradient(45deg, rgba(0,166,255,1) 0%, rgba(21,100,219,1) 50%, rgba(0,80,255,1) 100%) !important; */
+  background: linear-gradient(0deg, rgba(0,166,255,1) 0%, rgba(21,100,219,1) 100%);
 }
 .nav-bar.homeMode .site-branding,
 .nav-bar.homeMode .site-nav,
