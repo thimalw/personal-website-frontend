@@ -154,9 +154,14 @@ export default {
     transition: all 250ms ease;
   }
   .project-block:hover .project-details {
-    box-shadow: 0 28px 38px -28px rgba(0,0,0,0.2);
+    box-shadow: 0 28px 38px -28px rgba(20, 99, 219, 0.25);
     transform: scale(1.01);
     opacity: 1;
+    border: 1px solid #8aa8d4 !important;
+    color: #1564db
+  }
+  .project-block:hover .project-details .project-details-label {
+    color: #8aa8d4;
   }
   .project-block .project-meta {
     flex-direction: column;
@@ -164,6 +169,12 @@ export default {
     width: 100px;
     flex-grow: 0;
     flex-shrink: 0;
+  }
+  .project-block:hover .project-meta .meta-item {
+    color: #8aa8d4;
+  }
+  .project-block:hover .project-meta .meta-item:hover {
+    color: #1564db;
   }
   .project-block .project-meta .meta-item + .meta-item {
     border-left: 0;
