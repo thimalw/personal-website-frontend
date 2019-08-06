@@ -55,6 +55,9 @@ export default {
   margin: 30px 0;
   position: relative;
 }
+.project-block:first-of-type {
+  margin-top: 0;
+}
 .project-block .project-details {
   padding: 20px;
   background-color: #fff;

@@ -80,7 +80,7 @@ export default {
   z-index: 400;
 }
 .nav-bar {
-  /* background: rgba(21, 100, 219, 1); */
+  /* background: #1564db; */
   background: linear-gradient(45deg, rgba(21, 100, 219, 1) 0%, rgba(21, 100, 219, 1) 50%, rgba(21, 100, 219, 1) 100%);
   width: calc(100% - 30px);
   height: 80px;

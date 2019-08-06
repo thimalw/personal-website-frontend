@@ -65,6 +65,7 @@ body {
   padding: 15px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 hr {
   border: 0;
@@ -72,8 +73,30 @@ hr {
   background-color: rgba(0,0,0,0.05);
 }
 h1,h2,h3,h4,h5,h6 {
-  /* font-weight: lighter; */
-  font-weight: normal;
+  font-weight: lighter;
   margin-top: 20px;
+  margin-bottom: 20px;
+  display: inline-block;
+  color: #1564db;
+  border-bottom: 1px solid #1564db;
+  padding-bottom: 20px;
+  /* text-transform: uppercase; */
+  line-height: 1;
 }
+h1:after,
+h2:after,
+h3:after,
+h4:after,
+h5:after,
+h6:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #e1edff;
+  position: absolute;
+  margin-top: 20px;
+  z-index: -1;
+}
+
 </style>
