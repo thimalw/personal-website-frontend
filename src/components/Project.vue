@@ -8,12 +8,9 @@
     <p v-if="project.description != null" class="project-description">{{ project.description }}</p>
     <p v-else class="project-description">N/A</p>
 
-    <div class="project-details-dates">
-      <div class="project-details-date">
-        <span class="project-details-label">Created On</span>
-        <p>{{ project.created_at | formatDate }}</p>
-      </div>
-    </div>
+    <span class="project-details-label">Demo/Website</span>
+    <p v-if="project.homepage != null && project.homepage != ''"><a v-bind:href="project.homepage" target="_blank" rel="noopener noreferrer">{{ project.homepage }}</a></p>
+    <p v-else>N/A</p>
 
     <span class="project-details-label">Source</span>
     <p><a v-bind:href="project.html_url" target="_blank" rel="noopener noreferrer">{{ project.html_url }}</a></p>
