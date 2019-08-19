@@ -35,14 +35,22 @@ export default {
     Footer
   },
   mounted() {
+    // this.dataLoaded = false;
+    // axios
+    //   .get('https://api.github.com/users/thimalw/repos?type=owner&sort=created')
+    //   .then(response => {
+    //     this.projects = response.data.filter(data => {
+    //       return !data.fork;
+    //     });
+    //     this.dataLoaded = true;
+    //   });
     this.dataLoaded = false;
     axios
-      .get('https://api.github.com/users/thimalw/repos?type=owner&sort=created')
+      .get('http://localhost:3100/v1/projects')
       .then(response => {
-        this.projects = response.data.filter(data => {
-          return !data.fork;
-        });
+        this.projects = response.data.data;
         this.dataLoaded = true;
+        console.log(this.projects);
       });
   }
 }

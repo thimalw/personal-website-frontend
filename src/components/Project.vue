@@ -1,35 +1,39 @@
 <template>
 <div class="project-block">
-  <div class="project-details">
-    <span class="project-details-label">Name</span>
-    <p class="project-name">{{ project.name }}</p>
-
-    <span class="project-details-label">Description</span>
-    <p v-if="project.description != null" class="project-description">{{ project.description }}</p>
-    <p v-else class="project-description">N/A</p>
-
-    <span class="project-details-label">Demo/Website</span>
-    <p v-if="project.homepage != null && project.homepage != ''"><a v-bind:href="project.homepage" target="_blank" rel="noopener noreferrer">{{ project.homepage }}</a></p>
-    <p v-else>N/A</p>
-
-    <span class="project-details-label">Source</span>
-    <p><a v-bind:href="project.html_url" target="_blank" rel="noopener noreferrer">{{ project.html_url }}</a></p>
+  <div class="project-image">
+    <img src="" alt="">
   </div>
-  <div class="project-meta">
-    <div class="meta-item">
-      <i class="far fa-star"></i>
-      <span class="value">{{ project.stargazers_count }}</span>
+  <div class="project-data">
+    <div class="project-data-block">
+      <label>Name</label>
+      <span v-if="project.title" class="project-data-value">{{ project.title }}</span>
+      <span v-else class="project-data-value">N/A</span>
     </div>
-    <div class="meta-item">
-      <i class="far fa-eye"></i>
-      <span class="value">{{ project.watchers_count }}</span>
+    <div class="project-data-block">
+      <label>Description</label>
+      <span v-if="project.description" class="project-data-value">{{ project.description }}</span>
+      <span v-else class="project-data-value">N/A</span>
     </div>
-    <div class="meta-item">
-      <i class="fas fa-code-branch"></i>
-      <span class="value">{{ project.forks_count }}</span>
-    </div>
-    <div class="meta-item">
-      <span class="value">{{ project.language }}</span>
+    <div v-if="project.source || project.demo || project.blog_post" class="project-data-block">
+      <label>Links</label>
+      <div v-if="project.demo" class="project-data-link">
+        <a v-bind:href="project.demo" target="_blank" rel="noopener noreferrer">
+          <i class="fa fa-magic"></i>
+          Demo
+        </a>
+      </div>
+      <div v-if="project.source" class="project-data-link">
+        <a v-bind:href="project.source" target="_blank" rel="noopener noreferrer">
+          <i class="fa fa-code"></i>
+          Source
+        </a>
+      </div>
+      <div v-if="project.blog_post" class="project-data-link">
+        <a v-bind:href="project.blog_post" target="_blank" rel="noopener noreferrer">
+          <i class="fa fa-pencil-alt"></i>
+          Blog Post
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -48,133 +52,98 @@ export default {
 .project-block {
   display: flex;
   flex-direction: column;
-  color: #333;
-  margin: 30px 0;
+  align-items: stretch;
+  margin-bottom: 30px;
+}
+.project-image {
   position: relative;
+  display: block;
+  width: 100%;
+  min-height: 250px;
+  border: 1px solid #1564DB;
+  flex-grow: 1;
+  flex-shrink: 0;
+  border-radius: 6px 6px 0 0;
 }
-.project-block:first-of-type {
-  margin-top: 0;
-}
-.project-block .project-details {
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 6px;
-}
-.project-block .project-details {
+.project-data {
   flex-grow: 1;
   flex-shrink: 1;
-  width: 100%;
+  border: 1px solid #1564DB;
+  border-top: 0;
+  border-radius: 0 0 6px 6px;
 }
-.project-block .project-details .project-details-label {
-  margin: 0;
-  line-height: 1;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 12px;
+.project-data-block {
+  padding: 0 15px;
+  margin-top: 15px;
+}
+.project-data-block label {
   display: block;
   color: #999;
-  margin-top: 20px;
+  text-transform: uppercase;
+  font-size: 14px;
 }
-.project-block .project-details .project-details-label:first-child {
-  margin-top: 0;
+.project-data-link {
+  display: inline-block;
 }
-.project-block .project-details .project-name {
-  margin-bottom: 0;
-  margin-top: 0;
-  line-height: 1;
-}
-.project-block .project-details p {
-  margin: 0;
-  font-size: 16px;
-}
-.project-block .project-details p a,
-.project-block .project-details p a:visited,
-.project-block .project-details p a:focus {
-  color: inherit;
-  text-decoration: none;
-}
-.project-block .project-details p a:hover,
-.project-block .project-details p a:active {
-  color: rgb(75, 139, 182);
-  text-decoration: underline;
-}
-.project-block .project-details .project-description {
-  margin-bottom: 15px;
-  margin-top: 0;
-}
-.project-block .project-details .project-details-dates {
-  display: flex;
-  flex-direction: row;
-}
-.project-block .project-details .project-details-date + .project-details-date {
+.project-data-link + .project-data-link {
   margin-left: 20px;
 }
-.project-block .project-meta {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+.project-data-link a {
+  text-decoration: none !important;
+  color: #1564DB;
+  text-transform: uppercase;
+  font-size: 14px;
 }
-.project-block .project-meta .meta-item {
-  display: flex;
-  flex-grow: 1;
-  flex-shrink: 1;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-  color: #888;
-  font-size: 12px;
-  cursor: default;
-  transition: all 200ms ease;
-}
-.project-block .project-meta .meta-item:hover {
-  color: #000;
-}
-.project-block .project-meta .meta-item i {
-  display: inline-block;
+.project-data-link a i {
   margin-right: 5px;
 }
 @media(min-width: 768px) {
   .project-block {
     flex-direction: row;
-    opacity: 0.75;
-    transition: all 250ms ease;
-  }
-  .project-block:hover {
-    opacity: 1;
-  }
-  .project-block .project-details {
-    box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
     transform: scale(1);
     transition: all 250ms ease;
   }
-  .project-block:hover .project-details {
-    box-shadow: 0 28px 38px -28px rgba(20, 99, 219, 0.25);
-    transform: scale(1.01);
+  .project-image {
+    border: 1px solid #e5e5e5;
+    width: 360px;
+    min-height: 300px;
+    border-radius: 6px;
+    transition: all 250ms ease;
+  }
+  .project-data {
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    margin-left: 15px;
+    transition: all 250ms ease;
+  }
+  .project-data-value {
+    color: #666;
+    transition: all 250ms ease;
+  }
+  .project-data-link a {
+    color: #666;
     opacity: 1;
-    border: 1px solid #8aa8d4 !important;
-    color: #1564db
+    transition: all 250ms ease;
   }
-  .project-block:hover .project-details .project-details-label {
-    color: #8aa8d4;
+  .project-block:hover  {
+    transform: scale(1.01);
   }
-  .project-block .project-meta {
-    flex-direction: column;
-    border-top: 0;
-    width: 100px;
-    flex-grow: 0;
-    flex-shrink: 0;
+  .project-block:hover .project-image {
+    border: 1px solid #1564DB;
+    box-shadow: 0 28px 38px -28px rgba(20, 99, 219, 0.25);
   }
-  .project-block:hover .project-meta .meta-item {
-    color: #8aa8d4;
+  .project-block:hover .project-data {
+    border: 1px solid #1564DB;
+    box-shadow: 0 28px 38px -28px rgba(20, 99, 219, 0.25);
   }
-  .project-block:hover .project-meta .meta-item:hover {
-    color: #1564db;
+  .project-block:hover .project-data-value {
+    color: #000;
   }
-  .project-block .project-meta .meta-item + .meta-item {
-    border-left: 0;
+  .project-block:hover .project-data-link a {
+    color: #1564DB;
+  }
+  .project-data-link a:hover {
+    opacity: 0.7;
   }
 }
 </style>
