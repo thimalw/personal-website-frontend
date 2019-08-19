@@ -1,8 +1,5 @@
 <template>
     <div class="social-icons">
-        <a href="https://twitter.com/ThimalW" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-twitter"></i>
-        </a>
         <a href="https://www.linkedin.com/in/thimalw/" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-linkedin"></i>
         </a>
