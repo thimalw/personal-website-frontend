@@ -2,8 +2,7 @@
   <div class="projects">
     <div class="container">
       <h1>Projects</h1>
-      <!-- <hr> -->
-      <Loading v-if="!dataLoaded"/>
+      <ProjectLoading v-if="!dataLoaded"/>
       <Project
         v-for="project in projects"
         v-bind:key="project.id"
@@ -18,7 +17,7 @@
 // @ is an alias to /src
 import axios from 'axios';
 import Project from '@/components/Project.vue';
-import Loading from '@/components/Loading.vue';
+import ProjectLoading from '@/components/ProjectLoading.vue';
 import Footer from '@/components/Footer.vue';
 
 export default {
@@ -31,7 +30,7 @@ export default {
   },
   components: {
     Project,
-    Loading,
+    ProjectLoading,
     Footer
   },
   mounted() {
