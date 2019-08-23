@@ -1,8 +1,7 @@
 <template>
 <div class="project-block">
-  <div class="project-image">
-    <img src="" alt="">
-  </div>
+  <img v-if="project.image" :src="project.image" :alt="project.title" class="project-image">
+  <img v-else src="" class="project-image">
   <div class="project-data">
     <div class="project-data-block">
       <label>Name</label>
@@ -35,6 +34,16 @@
         </a>
       </div>
     </div>
+    <div v-if="project.technology || project.test_technology" class="project-data-row">
+      <div v-if="project.technology" class="project-data-block">
+        <label>Technology</label>
+        <span class="project-data-value">{{ project.technology }}</span>
+      </div>
+      <div v-if="project.test_technology" class="project-data-block">
+        <label>Test Frameworks</label>
+        <span class="project-data-value">{{ project.test_technology }}</span>
+      </div>
+    </div>
   </div>
 </div>
 </template>
@@ -64,17 +73,23 @@ export default {
   flex-grow: 1;
   flex-shrink: 0;
   border-radius: 6px 6px 0 0;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
 }
 .project-data {
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
   flex-shrink: 1;
   border: 1px solid #1564DB;
   border-top: 0;
   border-radius: 0 0 6px 6px;
+  padding-top: 15px;
 }
 .project-data-block {
   padding: 0 15px;
-  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .project-data-block label {
   display: block;
@@ -96,6 +111,13 @@ export default {
 }
 .project-data-link a i {
   margin-right: 5px;
+}
+.project-data-row {
+  border-top: 1px solid #1564DB;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  margin-top: auto;
+  margin-bottom: 0;
 }
 @media(min-width: 768px) {
   .project-block {
@@ -125,6 +147,24 @@ export default {
     opacity: 1;
     transition: all 250ms ease;
   }
+  .project-data-row {
+    border-top: 1px solid #e5e5e5;
+    transition: all 250ms ease;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    padding-bottom: 0;
+    position: relative;
+  }
+  .project-data-row .project-data-block {
+    margin: 0;
+    padding: 15px;
+    transition: all 250ms ease;
+    width: 50%;
+  }
+  .project-data-row .project-data-block + .project-data-block {
+    border-left: 1px solid #e5e5e5;
+  }
   .project-block:hover  {
     transform: scale(1.01);
   }
@@ -144,6 +184,12 @@ export default {
   }
   .project-data-link a:hover {
     opacity: 0.7;
+  }
+  .project-block:hover .project-data-row {
+    border-top: 1px solid #1564DB;
+  }
+  .project-block:hover .project-data-row .project-data-block + .project-data-block {
+    border-left: 1px solid #1564DB;
   }
 }
 </style>
