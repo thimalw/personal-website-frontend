@@ -46,7 +46,7 @@ export default {
     //   });
     this.dataLoaded = false;
     axios
-      .get('http://localhost:3100/v1/projects')
+      .get('https://api.thimal.me/v1/projects')
       .then(response => {
         this.projects = response.data.data;
         this.dataLoaded = true;
