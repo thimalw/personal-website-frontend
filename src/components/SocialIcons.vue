@@ -26,7 +26,7 @@ export default {
   margin: 0 5px;
   padding: 15px 5px;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 20px;
 }
 .social-icons a + a:before {
   content: "/";
