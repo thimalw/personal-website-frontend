@@ -2,7 +2,6 @@
 <div class="nav-links">
     <router-link @click.native="disableNav" class="nav-item" to="/">Home</router-link>
     <router-link @click.native="disableNav" class="nav-item" to="/projects">Projects</router-link>
-    <a @click.native="disableNav" href="https://thimal.me/resume" target="_blank" rel="noopener noreferrer">Resume</a>
     <a @click.native="disableNav" href="https://debug.cafe" target="_blank" rel="noopener noreferrer">Blog</a>
 </div>
 </template>
