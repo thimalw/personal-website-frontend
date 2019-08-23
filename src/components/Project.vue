@@ -70,7 +70,7 @@ export default {
   width: 100%;
   min-height: 250px;
   border: 1px solid #1564DB;
-  flex-grow: 1;
+  flex-grow: 0;
   flex-shrink: 0;
   border-radius: 6px 6px 0 0;
   overflow: hidden;
