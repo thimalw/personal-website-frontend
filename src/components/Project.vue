@@ -115,7 +115,7 @@ export default {
 .project-data-row {
   border-top: 1px solid #1564DB;
   margin-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 15px;
   margin-top: auto;
   margin-bottom: 0;
 }
@@ -153,7 +153,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: stretch;
-    padding-bottom: 0;
+    padding-top: 0;
     position: relative;
   }
   .project-data-row .project-data-block {

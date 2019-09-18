@@ -38,6 +38,11 @@ export default {
 * {
   box-sizing: border-box;
 }
+html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
 body {
   padding: 0;
   margin: 0;
@@ -45,11 +50,15 @@ body {
   color: #000;
   font-size: 16px;
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 #app {
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  overflow: hidden;
 }
 #content {
   margin-top: 110px;

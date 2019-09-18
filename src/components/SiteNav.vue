@@ -77,14 +77,16 @@ export default {
   width: 100%;
   top: 0;
   left: 0;
+  right: 0;
+  margin: 0;
   z-index: 400;
 }
 .nav-bar {
   /* background: #1564db; */
   background: linear-gradient(45deg, rgba(21, 100, 219, 1) 0%, rgba(21, 100, 219, 1) 50%, rgba(21, 100, 219, 1) 100%);
-  width: calc(100% - 30px);
+  width: calc(100vw - 30px);
   height: 80px;
-  margin: 0 15px 15px 15px;
+  margin: 0 auto;
   color: #fff;
   display: flex;
   flex-direction: row;
@@ -156,8 +158,24 @@ export default {
 }
 
 @media(max-width: 768px) {
+  /* hide items showing from around the rounded edges of the navbar on top */
+  #nav::before {
+    content: "";
+    display: block;
+    width: calc(100% - 30px);
+    height: 25px;
+    background-color: #fff;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
   .nav-bar {
     height: 50px;
+  }
+  .nav-bar.scrolled {
+    box-shadow: 0 18px 20px -20px rgba(0,0,0,0.88);
   }
   .nav-bar .site-branding img {
     height: 34px;
@@ -175,13 +193,10 @@ export default {
     padding: 0;
     transition: all 150ms linear;
     opacity: 0;
-    /* transform: scaleY(0); */
     pointer-events: none;
   }
   .nav-bar.active .site-nav {
-    top: 65px;
     opacity: 1;
-    /* transform: scaleY(1); */
     pointer-events: all;
   }
   .nav-bar .site-nav .nav-links {
@@ -210,6 +225,7 @@ export default {
   height: calc(100vh - 30px) !important;
   /* background: linear-gradient(45deg, rgba(0,166,255,1) 0%, rgba(21,100,219,1) 50%, rgba(0,80,255,1) 100%) !important; */
   background: linear-gradient(0deg, rgba(0,166,255,1) 0%, rgba(21,100,219,1) 100%);
+  z-index: -1;
 }
 .nav-bar.homeMode .site-branding,
 .nav-bar.homeMode .site-nav,
