@@ -22,6 +22,11 @@ export default new Router({
       path: '/blog',
       name: 'blog',
       component: () => import(/* webpackChunkName: "projects" */ './views/Blog.vue')
+    },
+    {
+      path: '*',
+      name: 'pageNotFound',
+      component: () => import(/* webpackChunkName: "projects" */ './views/PageNotFound.vue')
     }
   ]
 })
